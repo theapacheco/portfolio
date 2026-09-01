@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Austin Pacheco — Film Editor</title>
+    <meta name="description" content="Film editor portfolio and resume — selected work, credits, and contact." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('reelcut-theme') ||
+            (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,480;1,9..144,420&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="leader"><canvas id="leader-canvas"></canvas></div>
+
+    <nav id="site-nav"></nav>
+
+    <main>
+      <section id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-body">
+          <h1 id="hero-name">Austin Pacheco</h1>
+          <p class="hero-role" id="hero-role">Film Editor</p>
+          <p class="hero-statement" id="hero-statement"></p>
+        </div>
+        <div class="hero-bottom">
+          <span class="slate" id="hero-location"></span>
+          <span class="slate">SCROLL ↓</span>
+        </div>
+      </section>
+
+      <section id="featured">
+        <div class="section-head">
+          <h2>Selected Work</h2>
+        </div>
+        <div class="reel-grid" id="featured-grid"></div>
+        <a class="view-all" href="work.html">View full reel →</a>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="/src/pages/home.ts"></script>
+  </body>
+</html>

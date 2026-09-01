@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Austin Pacheco</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('reelcut-theme') ||
+            (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,480;1,9..144,420&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav id="site-nav"></nav>
+    <div class="page-head">
+      <h1>About</h1>
+    </div>
+    <main>
+      <section style="border-top:none;">
+        <div class="about-grid">
+          <div class="about-portrait">
+            <img src="/media/headshot.jpg" alt="Portrait" />
+          </div>
+          <div>
+            <p class="about-statement" id="about-statement"></p>
+            <p class="slate" id="about-location"></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head"><h2>Tools &amp; Focus</h2></div>
+        <ul class="skills-list" id="skills-list"></ul>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>Credits</h2>
+          <span class="slate">EDL — CHRONOLOGICAL</span>
+        </div>
+        <div class="edl" id="credits-list"></div>
+      </section>
+    </main>
+    <footer id="site-footer"></footer>
+    <script type="module" src="/src/pages/about.ts"></script>
+  </body>
+</html>
