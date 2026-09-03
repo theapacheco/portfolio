@@ -11,7 +11,7 @@ export default defineConfig({
         main: r("./index.html"),
         work: r("./work.html"),
         about: r("./about.html"),
-        contact: r("./contact.html"),
+        resume: r("./resume.html"),
         admin: r("./admin.html"),
       },
     },

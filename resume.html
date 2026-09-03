@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Work — Austin Pacheco</title>
-    <meta name="description" content="Austin Pacheco — selected editing, writing, lighting, and camera work." />
+    <title>Résumé — Austin Pacheco</title>
+    <meta name="description" content="Austin Pacheco — full résumé, work experience, education, certifications, and contact." />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script>
       (function () {
@@ -25,43 +25,55 @@
   <body>
     <nav id="site-nav"></nav>
     <div class="page-head">
-      <h1>Work</h1>
-      <p>Click any project to see the details, read a script, or view the full piece.</p>
+      <h1>Résumé</h1>
+      <p id="resume-subtitle"></p>
     </div>
     <main>
-      <section style="border-top:none;" id="section-editing">
+      <!-- Contact info bar -->
+      <section id="resume-contact" style="border-top:none;"></section>
+
+      <!-- Experience -->
+      <section id="resume-experience">
         <div class="section-head">
-          <h2>Editing</h2>
-          <span class="slate" id="count-editing"></span>
+          <h2>Experience</h2>
         </div>
-        <div class="reel-grid" id="grid-editing"></div>
+        <div id="experience-list"></div>
       </section>
 
-      <section id="section-writing">
+      <!-- Education -->
+      <section id="resume-education">
         <div class="section-head">
-          <h2>Writing</h2>
-          <span class="slate" id="count-writing"></span>
+          <h2>Education</h2>
         </div>
-        <div class="reel-grid" id="grid-writing"></div>
+        <div id="education-list"></div>
       </section>
 
-      <section id="section-lighting">
+      <!-- Skills -->
+      <section id="resume-skills">
         <div class="section-head">
-          <h2>Lighting</h2>
-          <span class="slate" id="count-lighting"></span>
+          <h2>Tools & Skills</h2>
         </div>
-        <div class="reel-grid" id="grid-lighting"></div>
+        <ul class="skills-list" id="skills-list"></ul>
       </section>
 
-      <section id="section-camera">
+      <!-- Certifications -->
+      <section id="resume-certs">
         <div class="section-head">
-          <h2>Camera & Photos</h2>
-          <span class="slate" id="count-camera"></span>
+          <h2>Certifications</h2>
         </div>
-        <div class="reel-grid" id="grid-camera"></div>
+        <ul class="skills-list" id="certs-list"></ul>
+      </section>
+
+      <!-- Credits -->
+      <section id="resume-credits">
+        <div class="section-head">
+          <h2>Credits</h2>
+          <span class="slate">SELECTED FILMOGRAPHY</span>
+        </div>
+        <div class="edl" id="credits-list"></div>
       </section>
     </main>
     <footer id="site-footer"></footer>
-    <script type="module" src="/src/pages/work.ts"></script>
+    <script type="module" src="/src/pages/resume.ts"></script>
   </body>
 </html>

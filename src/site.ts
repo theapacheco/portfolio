@@ -1,19 +1,15 @@
 /**
- * Shared across every page: the top nav, the theme toggle, and the small
- * running timecode clock in the corner. Each page's entry script calls
- * initSite() once with the current page's id.
+ * Shared across every page: top nav (with mobile hamburger), theme toggle,
+ * and timecode clock. Each page calls initSite() once.
  */
 
-export type PageId = "home" | "work" | "about" | "contact" | "admin";
+export type PageId = "home" | "work" | "about" | "resume" | "admin";
 
-// Relative on purpose — every page lives at the same directory depth, so
-// this resolves correctly under a GitHub Pages project subpath (e.g.
-// /portfolio/) as well as a custom domain root. Do not add leading slashes.
 const NAV_ITEMS: { id: PageId; label: string; href: string }[] = [
   { id: "home", label: "Home", href: "index.html" },
   { id: "work", label: "Work", href: "work.html" },
   { id: "about", label: "About", href: "about.html" },
-  { id: "contact", label: "Contact", href: "contact.html" },
+  { id: "resume", label: "Résumé", href: "resume.html" },
 ];
 
 const THEME_KEY = "reelcut-theme";
@@ -67,7 +63,10 @@ export function renderNav(current: PageId) {
   if (!nav) return;
   nav.innerHTML = `
     <a class="brand" href="index.html">REEL CUT</a>
-    <div class="nav-links">
+    <button type="button" class="nav-burger" id="nav-burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       ${NAV_ITEMS.map(
         (item) => `
         <a href="${item.href}" class="${item.id === current ? "is-active" : ""}">${item.label}</a>`
@@ -78,12 +77,23 @@ export function renderNav(current: PageId) {
       <button type="button" id="theme-toggle" aria-label="Toggle light and dark mode"></button>
     </div>
   `;
+
+  const burger = document.getElementById("nav-burger")!;
+  const links = document.getElementById("nav-links")!;
+  burger.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", String(open));
+  });
+  // Close menu on link click (mobile)
+  links.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => nav.classList.remove("is-open"))
+  );
 }
 
 export function renderFooter() {
   const footer = document.getElementById("site-footer");
   if (!footer) return;
-  footer.innerHTML = `<span class="slate">END OF REEL — BUILT WITH TYPESCRIPT &amp; THREE.JS</span>`;
+  footer.innerHTML = `<span class="slate">© ${new Date().getFullYear()} Austin Pacheco — BUILT WITH TYPESCRIPT &amp; THREE.JS</span>`;
 }
 
 export function initSite(current: PageId) {

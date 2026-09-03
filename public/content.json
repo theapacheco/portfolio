@@ -1,6 +1,6 @@
 {
   "name": "Austin Pacheco",
-  "role": "Film Editor",
+  "role": "Film Editor · Writer · Cinematographer",
   "location": "Based in Atlanta, GA — available for remote & on-site work",
   "statement": "I cut for rhythm first, story second — the two are rarely in conflict once you find the right frame to hold on. Six years across narrative shorts, music videos, and commercial work.",
 
@@ -11,13 +11,15 @@
         "meta": "Editor · Short Film · 2025",
         "image": "media/stick_editing.jpg",
         "video": "media/reel-loop.mp4",
-        "link": "#"
+        "link": "#",
+        "description": "A neon-soaked 18-minute short about two strangers sharing a rideshare through downtown Atlanta after midnight. I cut 14 hours of handheld footage into a tight, rhythmic piece that lives and dies on the pacing of silence between dialogue. Premiered at Atlanta Film Festival 2025."
       },
       {
         "title": "Harvest",
         "meta": "Editor, Colorist · Documentary · 2024",
         "image": "media/stick_editing.jpg",
-        "link": "#"
+        "link": "#",
+        "description": "Feature-length documentary following three generations of peach farmers in rural Georgia. I handled the full offline-to-online pipeline in DaVinci Resolve — assembly, fine cut, color grade, and deliverables. 87 minutes, 200+ hours of source footage."
       }
     ],
     "writing": [
@@ -25,13 +27,17 @@
         "title": "The Last Diner",
         "meta": "Writer · Feature Script · 2025",
         "image": "media/stick_writing.jpg",
-        "link": "#"
+        "link": "#",
+        "description": "A feature screenplay about a waitress at an all-night diner who discovers her regulars are not who they seem. Noir-tinged drama with dark comedy beats. Currently in development with Faultline Pictures.",
+        "script": "FADE IN:\n\nINT. LUNA'S ALL-NIGHT DINER — NIGHT\n\nFluorescent tubes hum over red vinyl booths. A jukebox in the corner plays something slow and forgotten. The clock above the grill reads 2:47 AM.\n\nMARLENE (34), sharp eyes behind tired makeup, tops off coffee for BOOTH 4 — an OLD MAN in a wool coat who has been here every night this week.\n\nMARLENE\nSame time tomorrow, Mr. Calloway?\n\nCALLOWAY\n(without looking up)\nThat depends on whether tomorrow comes.\n\nMarlene pauses. Laughs it off. Moves on.\n\nShe passes BOOTH 7 — a YOUNG WOMAN (20s) typing furiously on a laptop, surrounded by crumpled napkins.\n\nMARLENE\nRefill?\n\nYOUNG WOMAN\n(not looking up)\nI'm rewriting the ending. Again.\n\nMARLENE\nOf what?\n\nYOUNG WOMAN\nEverything.\n\nMarlene glances at the screen. We catch a fragment: a police report. Crime scene photos. This is not fiction.\n\nThe BELL above the door RINGS. A man in a soaked raincoat steps in. He doesn't sit down. He scans every booth.\n\nMARLENE (V.O.)\nI used to think the late shift was boring. That nothing real happens after 2 AM. I was wrong.\n\nSMASH CUT TO:\n\nINT. LUNA'S ALL-NIGHT DINER — LATER\n\nThe diner is empty. Every booth. Every stool. Marlene stands alone behind the counter. The jukebox has stopped. The clock reads 2:47 AM. Still.\n\nFADE OUT."
       },
       {
         "title": "Neon Silence",
         "meta": "Writer · Short Script · 2024",
         "image": "media/stick_writing.jpg",
-        "link": "#"
+        "link": "#",
+        "description": "Award-winning short screenplay. A deaf teenager navigates a loud house party for the first time. Told almost entirely without dialogue — the audience experiences the party through vibration, light, and body language. Won Best Short Screenplay at Peachtree Film Awards 2024.",
+        "script": "FADE IN:\n\nINT. SUBURBAN HOUSE — NIGHT\n\nBass vibrates through the walls. We HEAR it — a thumping, distorted pulse. Then:\n\nSILENCE.\n\nWe are inside JADE's world now. JADE (17), curly hair pulled back, stands at the front door. She presses her palm flat against the wood. Feels the music.\n\nShe opens the door.\n\nINT. LIVING ROOM — CONTINUOUS\n\nA wall of bodies. Mouths move but we hear nothing. Lights strobe. Red cups rise and fall. Someone is laughing — we see it in the way their shoulders shake, their head thrown back.\n\nJade steps in. She moves through the crowd like water around stones.\n\nA BOY bumps into her. His mouth moves — an apology, maybe. He holds up a cup toward her. She shakes her head. Smiles.\n\nShe finds a corner. Leans against the wall. Closes her eyes.\n\nWe FEEL the bass through the wall behind her. A deep, rhythmic pulse.\n\nHer fingers tap against her thigh. In time. She's dancing. Just her fingers.\n\nA GIRL (MIKA, 17) slides into the space next to her. Mika doesn't speak. She just leans against the same wall. Closes her eyes too.\n\nTheir fingers find each other.\n\nThe bass pulses on.\n\nFADE OUT.\n\nTITLE CARD: NEON SILENCE"
       }
     ],
     "lighting": [
@@ -39,7 +45,15 @@
         "title": "Glasshouse",
         "meta": "Gaffer · Music Video · 2024",
         "image": "media/stick_lighting.jpg",
-        "link": "#"
+        "link": "#",
+        "description": "Music video for indie band Half Light. Shot in an abandoned greenhouse using only practical lights — 200 string lights, 40 candles, and two 1K tungsten Fresnels bounced off mylar sheets. No HMIs, no LEDs. All warmth."
+      },
+      {
+        "title": "Parallel Lines",
+        "meta": "Lighting Designer · Stage Production · 2023",
+        "image": "media/stick_lighting.jpg",
+        "link": "#",
+        "description": "Live theatrical production at The Fox Theatre, Atlanta. Designed a lighting plot with 64 fixtures across 4 acts. Heavy use of gobo projections and color temperature shifts to mark time-of-day transitions in a play set entirely in one room."
       }
     ],
     "camera": [
@@ -47,62 +61,118 @@
         "title": "Concrete Orbit",
         "meta": "Cinematographer · Commercial · 2023",
         "image": "media/stick_camera.jpg",
-        "link": "#"
+        "link": "#",
+        "description": "60-second national spot for an Atlanta-based sneaker brand. Shot on ARRI Alexa Mini with Cooke S4 primes. Handheld street photography aesthetic — we followed real skaters through Woodruff Park at golden hour across two shoot days."
       },
       {
         "title": "Salt Flats",
         "meta": "Camera Operator · Feature · 2023",
         "image": "media/stick_camera.jpg",
-        "link": "#"
+        "link": "#",
+        "description": "Independent feature shot on location in Bonneville, Utah. Operated A-cam (RED Komodo, Sigma Cine lenses) across a 22-day shoot. Primarily Steadicam and dolly work for wide landscape compositions."
+      },
+      {
+        "title": "Stillwater Portraits",
+        "meta": "Photographer · Personal Project · 2022",
+        "image": "media/stick_camera.jpg",
+        "link": "#",
+        "description": "Ongoing personal photography series. Environmental portraits of people in small Georgia towns, shot on medium format film (Mamiya RB67). Published in Atlanta Magazine, Southern Living."
       }
     ]
   },
 
-  "resume": [
-    {
-      "title": "Senior Video Editor",
-      "company": "Northbound Studio",
-      "dates": "2021 – Present",
-      "description": "Lead editor for commercial spots and branded content. Managed a team of 3 assistant editors and oversaw post-production workflows for national campaigns."
-    },
-    {
-      "title": "Freelance Writer & Editor",
-      "company": "Self-Employed",
-      "dates": "2018 – 2021",
-      "description": "Edited short films, music videos, and independent features. Pitched and wrote screenplays for various indie studios, including the award-winning short 'Neon Silence'."
-    },
-    {
-      "title": "Gaffer / Camera Operator",
-      "company": "Meridian Film Co.",
-      "dates": "2016 – 2018",
-      "description": "Worked on set in the lighting and camera departments. Operated A-cam for multiple indie features and ran lighting setups for high-budget music videos."
-    }
-  ],
+  "resume": {
+    "experience": [
+      {
+        "title": "Senior Video Editor",
+        "company": "Northbound Studio",
+        "dates": "2021 – Present",
+        "bullets": [
+          "Lead editor for commercial spots and branded content across 30+ national campaigns",
+          "Managed a team of 3 assistant editors; built post-production workflow templates in Premiere and Resolve",
+          "Delivered broadcast-ready masters for clients including Delta, Coca-Cola, and Georgia Tourism"
+        ]
+      },
+      {
+        "title": "Freelance Writer & Editor",
+        "company": "Self-Employed",
+        "dates": "2018 – 2021",
+        "bullets": [
+          "Edited 15+ short films, music videos, and one independent feature across narrative and documentary",
+          "Wrote 3 original screenplays; 'Neon Silence' won Best Short Screenplay at Peachtree Film Awards 2024",
+          "Managed end-to-end post: ingest, assembly, offline/online, color prep, sound design, and deliverables"
+        ]
+      },
+      {
+        "title": "Gaffer / Camera Operator",
+        "company": "Meridian Film Co.",
+        "dates": "2016 – 2018",
+        "bullets": [
+          "Operated A-cam and B-cam on 6 independent feature productions and 20+ commercial shoots",
+          "Designed and rigged lighting setups for sets up to 5,000 sq ft, managing grip and electric crews of 4-8",
+          "Transitioned from lighting to editing after discovering a passion for post-production storytelling"
+        ]
+      },
+      {
+        "title": "Production Assistant",
+        "company": "Loop & Line Productions",
+        "dates": "2014 – 2016",
+        "bullets": [
+          "Supported camera, grip, and electric departments on set for commercials and corporate videos",
+          "Coordinated equipment logistics and daily production reports for shoots across the Southeast"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "B.F.A. in Film & Media Arts",
+        "school": "Georgia State University",
+        "year": "2016",
+        "notes": "Concentration in Cinematography & Post-Production. Dean's List. Senior thesis film 'Low Tide' screened at 3 regional festivals."
+      }
+    ],
+    "certifications": [
+      "ARRI Certified Camera Operator (Alexa Mini / Mini LF)",
+      "DaVinci Resolve Certified Colorist",
+      "FAA Part 107 Remote Pilot (Drone)",
+      "OSHA 10 Entertainment Industry Safety"
+    ]
+  },
 
   "credits": [
     { "year": "2025", "role": "Editor", "project": "Night Drive", "studio": "Faultline Pictures" },
+    { "year": "2025", "role": "Writer", "project": "The Last Diner", "studio": "Faultline Pictures" },
     { "year": "2024", "role": "Editor / Colorist", "project": "Harvest", "studio": "Fieldnote Docs" },
-    { "year": "2024", "role": "Writer", "project": "The Last Diner", "studio": "Spec Script" },
+    { "year": "2024", "role": "Writer", "project": "Neon Silence", "studio": "Independent" },
     { "year": "2024", "role": "Gaffer", "project": "Glasshouse — music video", "studio": "Half Light Records" },
     { "year": "2023", "role": "Cinematographer", "project": "Concrete Orbit — 60s spot", "studio": "Northbound Studio" },
-    { "year": "2023", "role": "Camera Operator", "project": "Salt Flats", "studio": "Meridian Film Co." }
+    { "year": "2023", "role": "Camera Operator", "project": "Salt Flats", "studio": "Meridian Film Co." },
+    { "year": "2023", "role": "Lighting Designer", "project": "Parallel Lines — stage", "studio": "The Fox Theatre" }
   ],
 
   "skills": [
     "Avid Media Composer",
-    "Premiere Pro",
-    "DaVinci Resolve",
-    "Screenwriting (Final Draft)",
-    "Set Lighting & Grip",
-    "Cinematography"
+    "Adobe Premiere Pro",
+    "DaVinci Resolve (Edit + Color)",
+    "Final Cut Pro",
+    "After Effects & Motion Graphics",
+    "Screenwriting (Final Draft, Highland)",
+    "Sound Design & Mix Prep (Pro Tools)",
+    "ARRI Alexa / RED Komodo / Blackmagic",
+    "Steadicam & Gimbal Operation",
+    "Set Lighting & Grip (Tungsten, HMI, LED)",
+    "Drone Cinematography (DJI Inspire 3)",
+    "Medium Format Film Photography"
   ],
 
   "contact": {
     "email": "arpcareer24@gmail.com",
+    "phone": "(404) 555-0192",
     "links": [
       { "label": "Vimeo", "url": "#" },
       { "label": "IMDb", "url": "#" },
-      { "label": "LinkedIn", "url": "#" }
+      { "label": "LinkedIn", "url": "#" },
+      { "label": "Instagram", "url": "#" }
     ]
   }
 }

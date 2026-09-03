@@ -21,6 +21,7 @@ loadContent().then((content) => {
   document.getElementById("hero-statement")!.textContent = content.statement;
   document.getElementById("hero-location")!.textContent = content.location;
 
+  // Pull one from each category for the featured grid
   const featured = [
     ...(content.projects?.editing || []).slice(0, 1),
     ...(content.projects?.writing || []).slice(0, 1),
@@ -30,7 +31,7 @@ loadContent().then((content) => {
   grid.innerHTML = featured
     .map(
       (item) => `
-      <a class="reel-card" href="${item.link ?? "#"}" aria-label="${item.title} — ${item.meta}">
+      <a class="reel-card" href="work.html" aria-label="${item.title} — ${item.meta}">
         <img src="${item.image}" alt="${item.title} still" loading="lazy" />
         ${item.video ? `<video src="${item.video}" muted loop playsinline preload="none"></video>` : ""}
         <div class="reel-card-info">

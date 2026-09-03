@@ -1,9 +1,6 @@
 /**
- * ─────────────────────────────────────────────────────────────────────────
- *  Content now lives in /public/content.json, not in this file.
- *  Edit it by hand, or through /admin (see README -> "Admin panel").
- *  This file only defines the shape of that data and fetches it at runtime.
- * ─────────────────────────────────────────────────────────────────────────
+ * Content lives in /public/content.json. Edit it by hand or through /admin.
+ * This file defines the shape of that data and fetches it at runtime.
  */
 
 export interface ReelItem {
@@ -12,6 +9,8 @@ export interface ReelItem {
   image: string;
   video?: string;
   link?: string;
+  description?: string;
+  script?: string;
 }
 
 export interface CreditItem {
@@ -26,11 +25,24 @@ export interface ContactLink {
   url: string;
 }
 
-export interface ResumeItem {
+export interface ExperienceItem {
   title: string;
   company: string;
   dates: string;
-  description: string;
+  bullets: string[];
+}
+
+export interface EducationItem {
+  degree: string;
+  school: string;
+  year: string;
+  notes?: string;
+}
+
+export interface Resume {
+  experience: ExperienceItem[];
+  education: EducationItem[];
+  certifications: string[];
 }
 
 export interface SiteContent {
@@ -44,11 +56,12 @@ export interface SiteContent {
     lighting: ReelItem[];
     camera: ReelItem[];
   };
-  resume: ResumeItem[];
+  resume: Resume;
   credits: CreditItem[];
   skills: string[];
   contact: {
     email: string;
+    phone?: string;
     links: ContactLink[];
   };
 }
@@ -58,24 +71,13 @@ const FALLBACK: SiteContent = {
   role: "Film Editor",
   location: "",
   statement: "",
-  projects: {
-    editing: [],
-    writing: [],
-    lighting: [],
-    camera: []
-  },
-  resume: [],
+  projects: { editing: [], writing: [], lighting: [], camera: [] },
+  resume: { experience: [], education: [], certifications: [] },
   credits: [],
   skills: [],
   contact: { email: "", links: [] },
 };
 
-/**
- * Fetches the live content.json (cache-busted so edits show up immediately).
- * Uses a relative path deliberately — every page in this project sits at the
- * same directory depth, so this resolves correctly whether the site is
- * served from a domain root or a GitHub Pages subpath like /portfolio/.
- */
 export async function loadContent(): Promise<SiteContent> {
   try {
     const res = await fetch(`content.json?t=${Date.now()}`);
