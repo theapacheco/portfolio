@@ -21,7 +21,11 @@ loadContent().then((content) => {
   document.getElementById("hero-statement")!.textContent = content.statement;
   document.getElementById("hero-location")!.textContent = content.location;
 
-  const featured = content.reel.slice(0, 3);
+  const featured = [
+    ...(content.projects?.editing || []).slice(0, 1),
+    ...(content.projects?.writing || []).slice(0, 1),
+    ...(content.projects?.camera || []).slice(0, 1)
+  ].slice(0, 3);
   const grid = document.getElementById("featured-grid")!;
   grid.innerHTML = featured
     .map(

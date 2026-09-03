@@ -26,12 +26,25 @@ export interface ContactLink {
   url: string;
 }
 
+export interface ResumeItem {
+  title: string;
+  company: string;
+  dates: string;
+  description: string;
+}
+
 export interface SiteContent {
   name: string;
   role: string;
   location: string;
   statement: string;
-  reel: ReelItem[];
+  projects: {
+    editing: ReelItem[];
+    writing: ReelItem[];
+    lighting: ReelItem[];
+    camera: ReelItem[];
+  };
+  resume: ResumeItem[];
   credits: CreditItem[];
   skills: string[];
   contact: {
@@ -45,7 +58,13 @@ const FALLBACK: SiteContent = {
   role: "Film Editor",
   location: "",
   statement: "",
-  reel: [],
+  projects: {
+    editing: [],
+    writing: [],
+    lighting: [],
+    camera: []
+  },
+  resume: [],
   credits: [],
   skills: [],
   contact: { email: "", links: [] },

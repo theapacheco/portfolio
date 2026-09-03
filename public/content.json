@@ -4,83 +4,97 @@
   "location": "Based in Atlanta, GA — available for remote & on-site work",
   "statement": "I cut for rhythm first, story second — the two are rarely in conflict once you find the right frame to hold on. Six years across narrative shorts, music videos, and commercial work.",
 
-  "reel": [
+  "projects": {
+    "editing": [
+      {
+        "title": "Night Drive",
+        "meta": "Editor · Short Film · 2025",
+        "image": "media/stick_editing.jpg",
+        "video": "media/reel-loop.mp4",
+        "link": "#"
+      },
+      {
+        "title": "Harvest",
+        "meta": "Editor, Colorist · Documentary · 2024",
+        "image": "media/stick_editing.jpg",
+        "link": "#"
+      }
+    ],
+    "writing": [
+      {
+        "title": "The Last Diner",
+        "meta": "Writer · Feature Script · 2025",
+        "image": "media/stick_writing.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Neon Silence",
+        "meta": "Writer · Short Script · 2024",
+        "image": "media/stick_writing.jpg",
+        "link": "#"
+      }
+    ],
+    "lighting": [
+      {
+        "title": "Glasshouse",
+        "meta": "Gaffer · Music Video · 2024",
+        "image": "media/stick_lighting.jpg",
+        "link": "#"
+      }
+    ],
+    "camera": [
+      {
+        "title": "Concrete Orbit",
+        "meta": "Cinematographer · Commercial · 2023",
+        "image": "media/stick_camera.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Salt Flats",
+        "meta": "Camera Operator · Feature · 2023",
+        "image": "media/stick_camera.jpg",
+        "link": "#"
+      }
+    ]
+  },
+
+  "resume": [
     {
-      "title": "Night Drive",
-      "meta": "Editor · Short Film · 2025",
-      "image": "media/still-01.jpg",
-      "video": "media/reel-loop.mp4",
-      "link": "#"
+      "title": "Senior Video Editor",
+      "company": "Northbound Studio",
+      "dates": "2021 – Present",
+      "description": "Lead editor for commercial spots and branded content. Managed a team of 3 assistant editors and oversaw post-production workflows for national campaigns."
     },
     {
-      "title": "Harvest",
-      "meta": "Editor, Colorist · Documentary · 2024",
-      "image": "media/still-02.jpg",
-      "link": "#"
+      "title": "Freelance Writer & Editor",
+      "company": "Self-Employed",
+      "dates": "2018 – 2021",
+      "description": "Edited short films, music videos, and independent features. Pitched and wrote screenplays for various indie studios, including the award-winning short 'Neon Silence'."
     },
     {
-      "title": "Glasshouse",
-      "meta": "Editor · Music Video · 2024",
-      "image": "media/still-03.jpg",
-      "link": "#"
-    },
-    {
-      "title": "Concrete Orbit",
-      "meta": "Editor · Commercial · 2023",
-      "image": "media/still-04.jpg",
-      "link": "#"
-    },
-    {
-      "title": "Salt Flats",
-      "meta": "Assistant Editor · Feature · 2023",
-      "image": "media/still-05.jpg",
-      "link": "#"
-    },
-    {
-      "title": "Afterglow",
-      "meta": "Editor · Narrative Short · 2022",
-      "image": "media/still-06.jpg",
-      "link": "#"
-    },
-    {
-      "title": "Low Tide",
-      "meta": "Editor · Music Video · 2022",
-      "image": "media/still-07.jpg",
-      "link": "#"
-    },
-    {
-      "title": "Paper Moon",
-      "meta": "Editor · Commercial · 2021",
-      "image": "media/still-08.jpg",
-      "link": "#"
-    },
-    {
-      "title": "Rust Belt",
-      "meta": "Assistant Editor · Documentary · 2021",
-      "image": "media/still-09.jpg",
-      "link": "#"
+      "title": "Gaffer / Camera Operator",
+      "company": "Meridian Film Co.",
+      "dates": "2016 – 2018",
+      "description": "Worked on set in the lighting and camera departments. Operated A-cam for multiple indie features and ran lighting setups for high-budget music videos."
     }
   ],
 
   "credits": [
     { "year": "2025", "role": "Editor", "project": "Night Drive", "studio": "Faultline Pictures" },
     { "year": "2024", "role": "Editor / Colorist", "project": "Harvest", "studio": "Fieldnote Docs" },
-    { "year": "2024", "role": "Editor", "project": "Glasshouse — music video", "studio": "Half Light Records" },
-    { "year": "2023", "role": "Editor", "project": "Concrete Orbit — 60s spot", "studio": "Northbound Studio" },
-    { "year": "2023", "role": "Assistant Editor", "project": "Salt Flats", "studio": "Meridian Film Co." },
-    { "year": "2022", "role": "Editor", "project": "Afterglow", "studio": "Independent" },
-    { "year": "2022", "role": "Editor", "project": "Low Tide — music video", "studio": "Half Light Records" },
-    { "year": "2021", "role": "Editor", "project": "Paper Moon — 30s spot", "studio": "Northbound Studio" },
-    { "year": "2021", "role": "Post-Production Coordinator", "project": "In-house commercial team", "studio": "Loop & Line" }
+    { "year": "2024", "role": "Writer", "project": "The Last Diner", "studio": "Spec Script" },
+    { "year": "2024", "role": "Gaffer", "project": "Glasshouse — music video", "studio": "Half Light Records" },
+    { "year": "2023", "role": "Cinematographer", "project": "Concrete Orbit — 60s spot", "studio": "Northbound Studio" },
+    { "year": "2023", "role": "Camera Operator", "project": "Salt Flats", "studio": "Meridian Film Co." }
   ],
 
   "skills": [
     "Avid Media Composer",
     "Premiere Pro",
     "DaVinci Resolve",
-    "Sound design & mix prep",
-    "Color grading",
-    "Documentary & narrative structure"
+    "Screenwriting (Final Draft)",
+    "Set Lighting & Grip",
+    "Cinematography"
   ],
 
   "contact": {

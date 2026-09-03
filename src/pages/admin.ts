@@ -6,7 +6,7 @@ initSite("admin");
 
 /* ── tiny local "auth" — see README → Admin panel for what this is and isn't ── */
 const PASS_KEY = "reelcut-admin-pass-hash";
-const SETTINGS_KEY = "reelcut-admin-settings"; // { owner, repo, branch } — token stored separately
+const SETTINGS_KEY = "reelcut-admin-settings";
 const TOKEN_KEY = "reelcut-admin-token";
 
 async function sha256Hex(text: string): Promise<string> {
@@ -34,7 +34,7 @@ function saveToken(t: string) {
   else localStorage.removeItem(TOKEN_KEY);
 }
 
-/* ── GitHub Contents API — runs from this browser, straight to api.github.com ── */
+/* ── GitHub Contents API ── */
 async function ghRequest(method: "GET" | "PUT", path: string, body?: unknown) {
   const { owner, repo, branch } = getSettings();
   const token = getToken();
@@ -107,7 +107,7 @@ async function renderGate() {
         ${
           hasPassword
             ? "Enter your admin password to continue."
-            : "No admin password is set on this browser yet. Choose one now — it only needs to keep casual visitors out on a shared computer; it isn't real security (see below)."
+            : "No admin password is set on this browser yet. Choose one now."
         }
       </p>
       <form class="admin-gate" id="gate-form">
@@ -116,13 +116,6 @@ async function renderGate() {
         <button class="btn" type="submit">${hasPassword ? "Unlock" : "Set password"}</button>
         ${hasPassword ? `<button class="btn secondary" type="button" id="gate-reset">Forgot it — reset</button>` : ""}
       </form>
-      <p class="hint" style="max-width:52ch;margin-top:20px;color:var(--fg-dim);font-size:0.85rem;">
-        Honest note: this password only lives in this browser's local storage and is checked
-        by this page's own JavaScript — it keeps the panel tidy on a shared machine, but
-        anyone who opens developer tools could bypass it. The thing that actually protects
-        your site is your GitHub token below, which you enter once, it stays only in this
-        browser, and it's the only way any change actually reaches GitHub.
-      </p>
     </div>
   `;
 
@@ -156,6 +149,10 @@ async function renderGate() {
 /* ── Dashboard ──────────────────────────────────────────────────────── */
 async function bootDashboard() {
   content = await loadContent();
+  if (!content.projects) {
+    content.projects = { editing: [], writing: [], lighting: [], camera: [] };
+  }
+  if (!content.resume) content.resume = [];
   renderDashboard();
 }
 
@@ -202,39 +199,47 @@ function renderDashboard() {
 
       <div class="admin-section">
         <h2>Contact links</h2>
-        <p class="hint">Shown on the Contact page (Vimeo, IMDb, LinkedIn, etc).</p>
         <div id="links-rows"></div>
         <button type="button" class="add-row" id="add-link">+ Add link</button>
       </div>
 
       <div class="admin-section">
         <h2>Skills</h2>
-        <p class="hint">One per line.</p>
         <textarea id="skills-area" style="min-height:120px;">${escapeHtml(content.skills.join("\n"))}</textarea>
       </div>
 
       <div class="admin-section">
-        <h2>Reel</h2>
-        <p class="hint">Drag in a new still or clip to replace one — it uploads when you Publish.</p>
-        <div id="reel-rows"></div>
-        <button type="button" class="add-row" id="add-reel">+ Add reel item</button>
+        <h2>Projects: Editing</h2>
+        <div id="editing-rows"></div>
+        <button type="button" class="add-row" data-add-project="editing">+ Add editing item</button>
+      </div>
+      
+      <div class="admin-section">
+        <h2>Projects: Writing</h2>
+        <div id="writing-rows"></div>
+        <button type="button" class="add-row" data-add-project="writing">+ Add writing item</button>
+      </div>
+      
+      <div class="admin-section">
+        <h2>Projects: Lighting</h2>
+        <div id="lighting-rows"></div>
+        <button type="button" class="add-row" data-add-project="lighting">+ Add lighting item</button>
+      </div>
+      
+      <div class="admin-section">
+        <h2>Projects: Camera</h2>
+        <div id="camera-rows"></div>
+        <button type="button" class="add-row" data-add-project="camera">+ Add camera item</button>
       </div>
 
       <div class="admin-section">
-        <h2>Credits</h2>
-        <div id="credits-rows"></div>
-        <button type="button" class="add-row" id="add-credit">+ Add credit</button>
+        <h2>Resume / Experience</h2>
+        <div id="resume-rows"></div>
+        <button type="button" class="add-row" id="add-resume">+ Add resume entry</button>
       </div>
 
       <div class="admin-section">
         <h2>Publishing</h2>
-        <p class="hint">
-          Your token is stored only in this browser's local storage and is sent only to
-          api.github.com when you click Publish — never anywhere else.
-          Use a
-          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">fine-grained token</a>
-          scoped to just this one repo, with Contents: Read and write.
-        </p>
         ${textField("GitHub owner", "__owner", settings.owner)}
         ${textField("Repo name", "__repo", settings.repo)}
         ${textField("Branch", "__branch", settings.branch)}
@@ -246,7 +251,7 @@ function renderDashboard() {
 
       <div class="admin-actions">
         <button class="btn" id="publish-btn">Publish to GitHub</button>
-        <button class="btn secondary" id="download-btn">Download content.json instead</button>
+        <button class="btn secondary" id="download-btn">Download content.json</button>
         <button class="btn secondary" id="lock-btn">Lock</button>
       </div>
 
@@ -255,8 +260,11 @@ function renderDashboard() {
   `;
 
   renderLinkRows();
-  renderReelRows();
-  renderCreditRows();
+  renderProjectRows("editing");
+  renderProjectRows("writing");
+  renderProjectRows("lighting");
+  renderProjectRows("camera");
+  renderResumeRows();
   wireBindings();
   wireActions();
 }
@@ -275,37 +283,37 @@ function renderLinkRows() {
     .join("");
 }
 
-function renderReelRows() {
-  const el = document.getElementById("reel-rows")!;
-  el.innerHTML = content.reel
+function renderProjectRows(category: "editing" | "writing" | "lighting" | "camera") {
+  const el = document.getElementById(category + "-rows")!;
+  el.innerHTML = content.projects[category]
     .map((item, i) => {
       const imgFile = pendingImage.get(item);
       const preview = imgFile ? URL.createObjectURL(imgFile) : item.image;
       return `
       <div class="repeat-row single-col">
-        <button type="button" class="remove-row" data-remove="reel.${i}">Remove</button>
+        <button type="button" class="remove-row" data-remove="projects.${category}.${i}">Remove</button>
         <img class="thumb-preview" src="${preview}" alt="" />
-        <div class="field"><label>Title</label><input type="text" data-path="reel.${i}.title" value="${escapeAttr(item.title)}" /></div>
-        <div class="field"><label>Meta line</label><input type="text" data-path="reel.${i}.meta" value="${escapeAttr(item.meta)}" /></div>
-        <div class="field"><label>Link (full cut)</label><input type="text" data-path="reel.${i}.link" value="${escapeAttr(item.link ?? "")}" /></div>
-        <div class="field"><label>Replace still</label><input type="file" accept="image/*" data-file="reel.${i}.image" /></div>
-        <div class="field"><label>Replace clip (optional, muted loop)</label><input type="file" accept="video/*" data-file="reel.${i}.video" /></div>
+        <div class="field"><label>Title</label><input type="text" data-path="projects.${category}.${i}.title" value="${escapeAttr(item.title)}" /></div>
+        <div class="field"><label>Meta line</label><input type="text" data-path="projects.${category}.${i}.meta" value="${escapeAttr(item.meta)}" /></div>
+        <div class="field"><label>Link (full cut)</label><input type="text" data-path="projects.${category}.${i}.link" value="${escapeAttr(item.link ?? "")}" /></div>
+        <div class="field"><label>Replace still</label><input type="file" accept="image/*" data-file="projects.${category}.${i}.image" /></div>
+        <div class="field"><label>Replace clip (optional)</label><input type="file" accept="video/*" data-file="projects.${category}.${i}.video" /></div>
       </div>`;
     })
     .join("");
 }
 
-function renderCreditRows() {
-  const el = document.getElementById("credits-rows")!;
-  el.innerHTML = content.credits
+function renderResumeRows() {
+  const el = document.getElementById("resume-rows")!;
+  el.innerHTML = content.resume
     .map(
-      (c, i) => `
+      (r, i) => `
       <div class="repeat-row">
-        <button type="button" class="remove-row" data-remove="credits.${i}">Remove</button>
-        <div class="field"><label>Year</label><input type="text" data-path="credits.${i}.year" value="${escapeAttr(c.year)}" /></div>
-        <div class="field"><label>Role</label><input type="text" data-path="credits.${i}.role" value="${escapeAttr(c.role)}" /></div>
-        <div class="field"><label>Project</label><input type="text" data-path="credits.${i}.project" value="${escapeAttr(c.project)}" /></div>
-        <div class="field"><label>Studio</label><input type="text" data-path="credits.${i}.studio" value="${escapeAttr(c.studio)}" /></div>
+        <button type="button" class="remove-row" data-remove="resume.${i}">Remove</button>
+        <div class="field"><label>Title</label><input type="text" data-path="resume.${i}.title" value="${escapeAttr(r.title)}" /></div>
+        <div class="field"><label>Company</label><input type="text" data-path="resume.${i}.company" value="${escapeAttr(r.company)}" /></div>
+        <div class="field"><label>Dates</label><input type="text" data-path="resume.${i}.dates" value="${escapeAttr(r.dates)}" /></div>
+        <div class="field" style="grid-column: span 2;"><label>Description</label><textarea data-path="resume.${i}.description">${escapeHtml(r.description)}</textarea></div>
       </div>`
     )
     .join("");
@@ -322,34 +330,42 @@ function wireBindings() {
   root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-path]").forEach((el) => {
     el.addEventListener("input", () => {
       const path = el.getAttribute("data-path")!;
-      if (path.startsWith("__")) return; // settings fields, handled separately
+      if (path.startsWith("__")) return;
       setByPath(content, path, el.value);
     });
   });
 
   root.querySelectorAll<HTMLInputElement>("[data-file]").forEach((el) => {
     el.addEventListener("change", () => {
-      const [, idxStr, kind] = el.getAttribute("data-file")!.split(".");
-      const item = content.reel[Number(idxStr)];
+      const path = el.getAttribute("data-file")!.split(".");
+      const category = path[1] as "editing"|"writing"|"lighting"|"camera";
+      const idx = Number(path[2]);
+      const kind = path[3];
+      const item = content.projects[category][idx];
       const file = el.files?.[0];
       if (!file || !item) return;
       if (kind === "image") pendingImage.set(item, file);
       else pendingVideo.set(item, file);
-      renderReelRows();
+      renderProjectRows(category);
       wireBindings();
     });
   });
 
   root.querySelectorAll<HTMLButtonElement>("[data-remove]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const [group, idxStr] = btn.getAttribute("data-remove")!.split(".");
-      const idx = Number(idxStr);
-      if (group === "reel") content.reel.splice(idx, 1);
-      if (group === "credits") content.credits.splice(idx, 1);
-      if (group === "links") content.contact.links.splice(idx, 1);
-      renderLinkRows();
-      renderReelRows();
-      renderCreditRows();
+      const parts = btn.getAttribute("data-remove")!.split(".");
+      if (parts[0] === "projects") {
+        const cat = parts[1] as keyof typeof content.projects;
+        const idx = Number(parts[2]);
+        content.projects[cat].splice(idx, 1);
+        renderProjectRows(cat);
+      } else if (parts[0] === "resume") {
+        content.resume.splice(Number(parts[1]), 1);
+        renderResumeRows();
+      } else if (parts[0] === "links") {
+        content.contact.links.splice(Number(parts[1]), 1);
+        renderLinkRows();
+      }
       wireBindings();
     });
   });
@@ -361,14 +377,19 @@ function wireActions() {
     renderLinkRows();
     wireBindings();
   });
-  document.getElementById("add-reel")!.addEventListener("click", () => {
-    content.reel.push({ title: "New project", meta: "Editor · 2026", image: "media/still-01.jpg" });
-    renderReelRows();
-    wireBindings();
+  
+  root.querySelectorAll<HTMLButtonElement>("[data-add-project]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cat = btn.getAttribute("data-add-project") as keyof typeof content.projects;
+      content.projects[cat].push({ title: "New project", meta: "Role · 2026", image: "media/stick_editing.jpg" });
+      renderProjectRows(cat);
+      wireBindings();
+    });
   });
-  document.getElementById("add-credit")!.addEventListener("click", () => {
-    content.credits.unshift({ year: "2026", role: "Editor", project: "New project", studio: "Studio" });
-    renderCreditRows();
+
+  document.getElementById("add-resume")!.addEventListener("click", () => {
+    content.resume.unshift({ title: "New Role", company: "Company", dates: "2026 - Present", description: "Description here" });
+    renderResumeRows();
     wireBindings();
   });
 
@@ -406,7 +427,7 @@ function wireActions() {
     log.innerHTML = "";
 
     if (!getToken()) {
-      line("No GitHub token set — add one under Publishing, or use Download instead.", "err");
+      line("No GitHub token set.", "err");
       return;
     }
 
@@ -419,7 +440,14 @@ function wireActions() {
     publishBtn.disabled = true;
 
     try {
-      for (const item of content.reel) {
+      const allProjects = [
+        ...content.projects.editing,
+        ...content.projects.writing,
+        ...content.projects.lighting,
+        ...content.projects.camera
+      ];
+      
+      for (const item of allProjects) {
         const img = pendingImage.get(item);
         if (img) {
           const ext = img.name.split(".").pop() || "jpg";
@@ -446,7 +474,7 @@ function wireActions() {
         utf8ToBase64(JSON.stringify(content, null, 2)),
         "Update site content via admin panel"
       );
-      line("Published. GitHub Actions will rebuild and deploy — usually live within a minute.", "ok");
+      line("Published. GitHub Actions will rebuild and deploy.", "ok");
       pendingImage.clear();
       pendingVideo.clear();
     } catch (err) {

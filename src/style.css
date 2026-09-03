@@ -1,6 +1,6 @@
 /* ── Tokens ─────────────────────────────────────────────────────────── */
 :root {
-  --tally: #e4362a;
+  --tally: #ff6f00;
   --display: "Fraunces", "Iowan Old Style", serif;
   --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
@@ -9,9 +9,9 @@
   --nav-h: 64px;
 
   /* fixed regardless of theme — the "screening room" stays dark */
-  --screen-bg: #14120f;
-  --screen-fg: #e8e3d8;
-  --screen-fg-dim: #a7a196;
+  --screen-bg: #05080a;
+  --screen-fg: #e8f0f4;
+  --screen-fg-dim: #8a9ea8;
 }
 
 @media (min-width: 720px) {
@@ -19,21 +19,23 @@
 }
 
 [data-theme="dark"] {
-  --bg: #14120f;
-  --fg: #e8e3d8;
-  --fg-dim: #a7a196;
-  --rule: rgba(232, 227, 216, 0.14);
-  --surface: #1c1a16;
-  --tally: #e4362a;
+  --bg: #091014;
+  --fg: #e8f0f4;
+  --fg-dim: #8a9ea8;
+  --rule: rgba(232, 240, 244, 0.12);
+  --surface: #111e25;
+  --tally: #ff6f00;
+  --gradient: linear-gradient(135deg, #ff6f00, #ff9e00);
 }
 
 [data-theme="light"] {
-  --bg: #f2efe7;
-  --fg: #211d16;
-  --fg-dim: #6b6459;
-  --rule: rgba(33, 29, 22, 0.13);
-  --surface: #e9e4d8;
-  --tally: #c22a1f;
+  --bg: #f5f8fa;
+  --fg: #1a2730;
+  --fg-dim: #5c7482;
+  --rule: rgba(26, 39, 48, 0.12);
+  --surface: #e4ecef;
+  --tally: #e65100;
+  --gradient: linear-gradient(135deg, #e65100, #ff8c00);
 }
 
 * { box-sizing: border-box; }
@@ -170,6 +172,9 @@ footer { padding: 40px var(--edge) 60px; }
   line-height: 0.98;
   margin: 0 0 0.3em;
   max-width: 14ch;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-role {
@@ -202,12 +207,18 @@ section:first-child { border-top: none; }
 .section-head h2 {
   font-family: var(--display); font-weight: 480;
   font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .page-head { padding: 56px var(--edge) 8px; }
 .page-head h1 {
   font-family: var(--display); font-weight: 480;
   font-size: clamp(2rem, 6vw, 3.4rem); margin: 0 0 0.25em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .page-head p { max-width: 52ch; color: var(--fg-dim); }
 
